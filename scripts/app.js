@@ -1,0 +1,1 @@
+const app = new ToDoController(new ToDoModel(), new ToDoView())

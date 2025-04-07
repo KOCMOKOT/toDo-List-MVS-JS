@@ -1,0 +1,164 @@
+* {
+    font-family: "Fira Code", serif;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.wrapper {
+    min-height: 100vh;
+    padding: 50px;
+
+    background: #222222;
+    text-align: center;
+}
+
+.wrapper h1{
+    margin: 0;
+}
+
+.wrapper a{
+    text-decoration: none;
+}
+
+header {
+    margin-bottom: 40px;
+}
+
+header h1 {
+    font-weight: bold;
+    font-size: 100px;
+
+    color: #FFA947;
+    text-shadow: #7A4100 3px 3px 3px;
+}
+
+.todo_input_div {
+    margin-bottom: 30px;
+}
+
+#todo_input {
+    width: 550px;
+    height: 60px;
+    box-sizing: border-box;
+
+    text-align: center;
+    font-size: 25px;
+    color: #D8DDEF;
+
+    background: #444444;
+    border-radius: 8px;
+
+    box-shadow: 0px 1px 2px 0px rgba(113, 35, 169, 0.7),
+                1px 2px 4px 0px rgba(113, 35, 169, 0.7),
+                2px 4px 8px 0px rgba(113, 35, 169, 0.7),
+                2px 4px 16px 0px rgba(113, 35, 169, 0.7);
+
+}
+#todo_input:focus{
+    outline: 5px solid rgba(147, 59, 178, 0.7);
+}
+
+#todo_list {
+    width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+
+    padding-bottom: 0;
+    padding-left: 0;
+
+    background: #444444;
+    list-style: none;
+}
+
+#todo_list li {
+    position: relative;
+
+    height: 45px;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+
+    font-size: 25px;
+    color: #D8DDEF;
+    text-align: left;
+
+    border-bottom: 1px solid #7D8DCA;
+
+}
+
+#todo_list .completed {
+    text-decoration: line-through;
+}
+
+#todo_list li button.delete{
+    position: absolute;
+
+    height: 20px;
+    width: 20px;
+
+    right: 20px;
+
+    color: #FFA947;
+    font-size: 20px;
+    font-weight: bold;
+    background: #444444;
+
+    border: none;
+}
+
+#todo_list li input {
+    position: absolute;
+    width: 540px;
+
+    top: 5px;
+    left: 5px;
+
+
+    font-size: 25px;
+    color: #D8DDEF;
+    text-align: left;
+    background: #444444;
+
+    border-bottom: 1px solid #FFA947;
+}
+
+#todo_footer {
+    display: flex;
+    justify-content: space-evenly;
+
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+
+    background: #444444;
+}
+
+#todo_footer div {
+    box-sizing: content-box;
+    padding-top: 8px;
+    padding-bottom: 8px;
+
+    display: flex;
+    align-items: center;
+}
+
+#todo_footer label {
+    margin-left: 15px;
+}
+
+#clear_completed {
+    width: 150px;
+
+    font-size: 16px;
+    color: #D8DDEF;
+    background: #444444;
+}
+
+footer {
+    color: #8E9AAF;
+    line-height: 0.5;
+}
