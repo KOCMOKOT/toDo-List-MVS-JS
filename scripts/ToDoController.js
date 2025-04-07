@@ -54,6 +54,6 @@ class ToDoController {
 
     updateView() {
         let filteredToDos = this.model.getFilterdToDos(this.filter);
-        this.view.renderToDos(this.model, filteredToDos);
+        this.view.renderToDos(this.model, this.filter);
     }
 }

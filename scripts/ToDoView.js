@@ -1,38 +1,38 @@
 class ToDoView {
     constructor() {
-        this.todo_input = document.getElementById('todo_input');
-        this.todo_list = document.getElementById('todo_list');
-        this.todo_footer = document.getElementById("todo_footer");
+        this.toDo_input = document.getElementById('todo_input');
+        this.toDo_list = document.getElementById('todo_list');
+        this.toDo_footer = document.getElementById("todo_footer");
 
         // State of editing one of the todo
         this.isEditing = false;
     }
 
-    renderToDos(toDos, filteredToDos) {
+    renderToDos(toDos, filter) {
         this.renderToDoFooter(toDos.getCountActiveToDo(), toDos.getCountCompletedToDo(), toDos.isEmpty());
-        this.renderToDoList(filteredToDos);
+        this.renderToDoList(toDos.getFilterdToDos(filter));
     }
 
-    renderToDoList(todos) {
-        this.todo_list.innerHTML = '';
-        todos.forEach(todo => {
+    renderToDoList(toDos) {
+        this.toDo_list.innerHTML = '';
+        toDos.forEach(toDo => {
             let li= document.createElement("li");
-            li.id = todo.id;
-            li.className = todo.completed ? "completed" : "";
+            li.id = toDo.id;
+            li.className = toDo.completed ? "completed" : "";
             li.addEventListener("click", () => {
-                this.isEditing || this.onToggle(todo.id);
+                this.isEditing || this.onToggle(toDo.id);
             });
             li.addEventListener("mouseover", (e) => {
-                this.isEditing || this.onMouseoverTodo(todo.id)
+                this.isEditing || this.onMouseoverTodo(toDo.id)
             });
             li.addEventListener("mouseout", (e) => {
-                this.isEditing || this.onMouseoutTodo(todo.id)
+                this.isEditing || this.onMouseoutTodo(toDo.id)
             });
 
             let label = document.createElement("label");
-            label.innerHTML = todo.text;
+            label.innerHTML = toDo.text;
             label.addEventListener("dblclick", (e) => {
-                this.isEditing || this.onDbClickTodo(todo.id)
+                this.isEditing || this.onDbClickTodo(toDo.id)
             })
 
             let button = document.createElement("button");
@@ -40,20 +40,20 @@ class ToDoView {
             button.className = "delete";
             button.innerHTML = "X";
             button.addEventListener("click", (event) => {
-                this.onRemove(todo.id);
+                this.onRemove(toDo.id);
                 event.stopPropagation();
             });
 
             li.appendChild(label);
             li.appendChild(button);
-            this.todo_list.appendChild(li);
+            this.toDo_list.appendChild(li);
         });
 
 
     }
 
     renderToDoFooter(countActive, countCompleted, isEmptyList) {
-        if (this.todo_footer.children.length !== 0)
+        if (this.toDo_footer.children.length !== 0)
         {
             if (isEmptyList) {
                 this.removeToDoFooter();
@@ -61,7 +61,7 @@ class ToDoView {
             }
 
             countCompleted === 0 ? this.offClearCompletedButton() : this.onClearCompletedButton();
-            this.todo_footer.getElementsByTagName("span")[0].innerHTML = "Count of tasks: " + countActive
+            this.toDo_footer.getElementsByTagName("span")[0].innerHTML = "Count of tasks: " + countActive
             return;
         }
 
@@ -103,13 +103,13 @@ class ToDoView {
         btnClearCompleted.addEventListener("click", this.onClickClearCompleted);
         btnClearCompleted_div.appendChild(btnClearCompleted);
 
-        this.todo_footer.appendChild(span_div);
-        this.todo_footer.appendChild(list_filter_buttons);
-        this.todo_footer.appendChild(btnClearCompleted);
+        this.toDo_footer.appendChild(span_div);
+        this.toDo_footer.appendChild(list_filter_buttons);
+        this.toDo_footer.appendChild(btnClearCompleted);
     }
 
     removeToDoFooter() {
-        let children = this.todo_footer.children;
+        let children = this.toDo_footer.children;
         Array.from(children).forEach((item) => {item.remove()});
     }
 
@@ -158,9 +158,9 @@ class ToDoView {
     }
 
     bindAddToDo(handler) {
-        this.todo_input.addEventListener("change", event => {
-            handler(this.todo_input.value);
-            this.todo_input.value = "";
+        this.toDo_input.addEventListener("change", event => {
+            handler(this.toDo_input.value);
+            this.toDo_input.value = "";
         });
     }
 

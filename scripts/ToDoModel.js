@@ -1,12 +1,13 @@
-class ToDoModel { constructor() {
+class ToDoModel {
+    constructor() {
         this._toDos = [];
     }
 
     addToDo(text) {
-        let todo = {id: Date.now(), text: text, completed: false};
-        this._toDos.push(todo);
+        let toDo = {id: Date.now(), text: text, completed: false};
+        this._toDos.push(toDo);
 
-        return todo;
+        return toDo;
     }
 
     removeToDo(id) {
